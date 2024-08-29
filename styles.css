@@ -1,0 +1,218 @@
+/* Estilos Base */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #181818;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 10px;
+    background-color: #282828;
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #e50914;
+}
+
+/* Conteúdo Principal */
+main {
+    flex: 1;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    margin: 20px 0;
+    color: #A19C9C;
+}
+
+/* Listagem de Filmes */
+.movies-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-rows: repeat(2, auto); /* 2 linhas automáticas */
+    gap: 20px;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1000px; /* Limite a largura máxima */
+}
+
+.movie {
+    position: relative;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.movie:hover {
+    transform: scale(1.05);
+}
+
+.movie img {
+    border-radius: 4px;
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.movie h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+    color: #f0f0f0;
+}
+
+.movie p {
+    margin: 0;
+    font-size: 1em;
+    color: #aaa;
+}
+
+.movie-info {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #E6E6FA;
+    color: #f0f0f0;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: none; /* Oculta inicialmente */
+    width: 250px; /* Largura da janelinha */
+    z-index: 10; /* Coloca a janelinha acima dos outros elementos */
+}
+
+.movie:hover .movie-info {
+    display: block; /* Mostra a janelinha ao passar o mouse */
+    position: absolute;
+    top: 10px; /* Ajuste conforme necessário para posicionamento */
+    left: 10px; /* Ajuste conforme necessário para posicionamento */
+}
+
+/* Estilo da Tela do Cinema */
+.screen {
+    background-color: #333;
+    height: 40px;
+    width: 80%;
+    margin: 0 auto 20px;
+    text-align: center;
+    color: #f0f0f0;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Container principal para a seleção de assentos */
+.seat-selection-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Colunas de assentos */
+.seat-column {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+    margin: 0 20px;
+}
+
+/* Estilo das filas de assentos */
+.seat-row {
+    display: contents;
+}
+
+/* Estilo individual dos assentos */
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    margin: 5px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Assentos selecionados */
+.seat.selected {
+    background-color: #6c8484;
+}
+
+/* Assentos reservados */
+.seat.occupied {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Resumo */
+.info {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #f44242;
+}
+
+.hidden {
+    display: none;
+}
+
+.summary {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #A19C9C; /* Cor do texto mais escura */
+}
+
+.summary h3 {
+    margin-top: 0;
+    color: #A19C9C; /* Cor do título ainda mais escura */
+}
+
+.summary p {
+    margin: 5px 0;
+    color: #A19C9C; /* Cor do texto mais escura */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #A19C9C; /* Cor do título mais escura */
+}

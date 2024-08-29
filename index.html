@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEEP.com</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="6.png" type="image/png">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <!-- Logo da empresa -->
+        <img src="4.png" alt="Logo do Cinema" style="max-width: 200px;">
+    </header>
+    <main>
+        <h2>Filmes em Cartaz</h2>
+        <div class="movies-list">
+            <div class="movie" onclick="selectMovie('Dois Estranhos', '12:10')">
+                <img src="https://image.tmdb.org/t/p/original/8ZRncL9WLV0aLOG4WKvML4Ljoq0.jpg" alt="Filme Exemplo 1">
+                <h3>Dois Estranhos</h3>
+                <p>Horário: 12:10</p>
+                <div class="movie-info">
+                    <p><strong>Sinopse:</strong> Um homem faz diversas tentativas de voltar para casa, mas se vê forçado a reviver um confronto mortal com um policial. Ano: 2021.</p>
+                    <p><strong>Horários:</strong> Terça-Feira 12:10</p>
+                    <p><strong>Dublado/Legendado:</strong> Legendado</p>
+                    <p><strong>Duração:</strong> 32 min</p>
+                    <p><strong>Categoria:</strong> Drama, Questões Sociais</p>
+                    <p><strong>Classificação:</strong> 16 anos</p>
+                </div>
+            </div>
+            <div class="movie" onclick="selectMovie('Se Algo Acontecer...Te Amo', '12:10')">
+                <img src="https://image.tmdb.org/t/p/original/81sFRZluM59eRmvhNMSPQItRfOV.jpg" alt="Filme Exemplo 2">
+                <h3>Se Algo Acontecer...Te Amo</h3>
+                <p>Horário: 12:10</p>
+                <div class="movie-info">
+                    <p><strong>Sinopse:</strong> "Divertida Mente 2", da Disney e da Pixar, retorna à mente da adolescente Riley, e o faz no momento em que a sala de comando está passando por uma demolição repentina para dar lugar a algo totalmente inesperado: novas emoções!</p>
+                    <p><strong>Horários:</strong> 19:30, 20:00, 22:30</p>
+                    <p><strong>Dublado/Legendado:</strong> Dublado</p>
+                    <p><strong>Duração:</strong> 110 min</p>
+                    <p><strong>Categoria:</strong> Animação, Família, Aventura, Comédia</p>
+                    <p><strong>Classificação:</strong> Livre</p>
+                </div>
+            </div>
+            <div class="movie" onclick="selectMovie('Guardiões da Galáxia: Vol. 3', '12:10')">
+                <img src="https://image.tmdb.org/t/p/original/wzvLbFgo4dv9KxkE9FLoMxygWDd.jpg" alt="Filme Exemplo 3">
+                <h3>Guardiões da Galáxia: Vol. 3</h3>
+                <p>Horário: 12:10</p>
+                <div class="movie-info">
+                    <p><strong>Sinopse:</strong> Peter Quill, que ainda está se recuperando da perda de Gamora, tem que reunir a sua equipe para defender o universo e proteger um dos seus. Uma missão que, se não for concluída com sucesso, pode levar ao fim dos Guardiões como os conhecemos.</p>
+                    <p><strong>Horários:</strong> 19:30, 20:15</p>
+                    <p><strong>Dublado/Legendado:</strong> Dublado</p>
+                    <p><strong>Duração:</strong> 150 min</p>
+                    <p><strong>Categoria:</strong> Ficção científica, Aventura</p>
+                    <p><strong>Classificação:</strong> 14 anos</p>
+                </div>
+            </div>
+            <div class="movie" onclick="selectMovie('Meu Malvado Favorito 4', '12:10')">
+                <img src="https://image.tmdb.org/t/p/original/9ScRf5CGfnjYXHveTJ64oF6hIEY.jpg" alt="Filme Exemplo 4">
+                <h3>Meu Malvado Favorito 4</h3>
+                <p>Horário: 19:30</p>
+                <div class="movie-info">
+                    <p><strong>Sinopse:</strong> Nesta sequência, o vilão mais amado do planeta retorna e agora Gru, Lucy, Margo, Edith e Agnes dão as boas-vindas a um novo membro da família: Gru Jr., que pretende atormentar seu pai. Enquanto se adapta com o pequeno, Gru enfrenta um novo inimigo, Maxime Le Mal, forçando sua namorada Valentina e a família a fugir do perigo.</p>
+                    <p><strong>Horários:</strong> 19:30, 21:00, 23:30</p>
+                    <p><strong>Dublado/Legendado:</strong> Dublado, Legendado</p>
+                    <p><strong>Duração:</strong> 94 min</p>
+                    <p><strong>Categoria:</strong> Animação, Família, Comédia, Ação</p>
+                    <p><strong>Classificação:</strong> Livre</p>
+                </div>
+            </div>
+            <div class="movie" onclick="selectMovie('Harry Potter e a Pedra Filosofal', '12:10')">
+                <img src="https://image.tmdb.org/t/p/original/9H9jMN85A8mb3GfvcsVWx7KQyF6.jpg" alt="Filme Exemplo 5">
+                <h3>Harry Potter e a Pedra Filosofal</h3>
+                <p>Horário: 19:30</p>
+                <div class="movie-info">
+                    <p><strong>Sinopse:</strong> Ao completar 11 anos, Harry Potter descobre que é um bruxo e que é esperado como aluno da Escola de Magia e Bruxaria de Hogwarts.</p>
+                    <p><strong>Horários:</strong> 17:00, 19:30, 20:45</p>
+                    <p><strong>Dublado/Legendado:</strong> Dublado</p>
+                    <p><strong>Duração:</strong> 161 min</p>
+                    <p><strong>Categoria:</strong> Aventura, Fantasia</p>
+                    <p><strong>Classificação:</strong> 10 anos</p>
+                </div>
+            </div>
+            <div class="movie" onclick="selectMovie('Kung Fu Panda 4', '12:10')">
+                <img src="https://image.tmdb.org/t/p/original/nrgX73kXgYxeFRFUr0e6t245y7b.jpg" alt="Filme Exemplo 6">
+                <h3>Kung Fu Panda 4</h3>
+                <p>Horário: 19:30</p>
+                <div class="movie-info">
+                    <p><strong>Sinopse:</strong> Po está prestes a se tornar o novo líder espiritual do Vale da Paz, mas antes que possa fazer isso, ele deve encontrar um sucessor para se tornar o novo Dragão Guerreiro. Ele parece encontrar uma em Zhen, uma raposa com muitas habilidades promissoras, mas que não gosta muito da ideia de Po treiná-la.</p>
+                    <p><strong>Horários:</strong> 19:30, 22:00, 00:00</p>
+                    <p><strong>Dublado/Legendado:</strong> Dublado, Legendado</p>
+                    <p><strong>Duração:</strong> 94 min</p>
+                    <p><strong>Categoria:</strong> Animação, Família, Fantasia, Ação</p>
+                    <p><strong>Classificação:</strong> Livre</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 CINEEP. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function selectMovie(title, time) {
+            // Armazena as informações do filme no localStorage
+            localStorage.setItem('selectedMovie', title);
+            localStorage.setItem('selectedTime', time);
+            // Redireciona para a página de seleção de assentos
+            window.location.href = 'selecao.html';
+        }
+    </script>
+</body>
+</html>

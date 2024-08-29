@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEEP.com</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="6.png" type="image/png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos específicos para a página de pagamento */
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            color: #B0A9A9; /* Cor mais escura para o texto dos rótulos */
+        }
+
+        input[type="text"], input[type="month"], input[type="tel"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-family: Arial, sans-serif;
+            color: #333; /* Cor mais escura para o texto nos inputs */
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .card-icons {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .card-icons i {
+            font-size: 24px;
+            color: #888;
+            margin-right: 20px;
+        }
+
+        .summary {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+            color: #333; /* Cor do texto mais escura */
+        }
+
+        .summary h3 {
+            margin-top: 0;
+            color: #333; /* Cor do texto mais escura */
+        }
+
+        .summary p {
+            margin: 5px 0;
+            color: #333; /* Cor do texto mais escura */
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            padding: 2px;
+        }
+
+        .logo img {
+            height: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="4.png" alt="Logo do Cinema">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="summary">
+            <h3>Resumo do Pedido</h3>
+            <p id="selected-movie-info">Informações do filme aqui.</p> <!-- Informações sobre o filme -->
+            <p>Assentos Selecionados: <span id="summary-selected-seats"></span></p> <!-- Exibição dos assentos selecionados -->
+            <p>Preço Total: <span id="total-price">R$ 0,00</span></p> <!-- Exibição do preço total -->
+        </div>
+
+        <h2>Informações de Pagamento</h2>
+
+        <div class="card-icons">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-amex"></i>
+        </div>
+
+        <form id="payment-form">
+            <label for="card-name">Nome no Cartão:</label>
+            <input type="text" id="card-name" placeholder="Ex: João Silva" required>
+
+            <label for="card-number">Número do Cartão:</label>
+            <input type="tel" id="card-number" placeholder="1234 5678 9012 3456" required>
+
+            <label for="expiry-date">Data de Expiração:</label>
+            <input type="month" id="expiry-date" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="tel" id="cvv" placeholder="123" required>
+
+            <button type="submit">Confirmar Pagamento</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 CINEEP. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Função para obter os parâmetros da URL
+        function getURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            const seats = params.get('seats');
+            return seats ? seats.split(',') : [];
+        }
+
+        // Exibe as informações dos assentos selecionados na página de pagamento
+        function displaySelectedSeats() {
+            const selectedSeats = getURLParams();
+            const selectedSeatsElement = document.getElementById('summary-selected-seats');
+            const totalPriceElement = document.getElementById('total-price');
+            const ticketPrice = 10.00; // Preço do ingresso
+
+            if (selectedSeats.length > 0) {
+                selectedSeatsElement.innerText = selectedSeats.join(', ');
+                const totalPrice = selectedSeats.length * ticketPrice;
+                totalPriceElement.innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+            } else {
+                selectedSeatsElement.innerText = 'Nenhum assento selecionado.';
+                totalPriceElement.innerText = 'R$ 0,00';
+            }
+        }
+
+        // Exibe as informações do filme selecionado
+        function displaySelectedMovieInfo() {
+            const selectedMovie = localStorage.getItem('selectedMovie');
+            const selectedTime = localStorage.getItem('selectedTime');
+            const movieInfoElement = document.getElementById('selected-movie-info');
+
+            if (selectedMovie && selectedTime) {
+                movieInfoElement.innerText = `Filme: ${selectedMovie} - Horário: ${selectedTime}`;
+            } else {
+                movieInfoElement.innerText = 'Nenhum filme selecionado.';
+            }
+        }
+
+        // Executa as funções quando a página é carregada
+        document.addEventListener('DOMContentLoaded', () => {
+            displaySelectedSeats();
+            displaySelectedMovieInfo();
+        });
+
+        // Simula o envio do formulário de pagamento
+        document.getElementById('payment-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            // Salva as informações do pagamento no localStorage
+            const selectedSeats = getURLParams();
+            const totalPrice = selectedSeats.length * 10.00;
+
+            localStorage.setItem('receiptMovie', localStorage.getItem('selectedMovie'));
+            localStorage.setItem('receiptTime', localStorage.getItem('selectedTime'));
+            localStorage.setItem('receiptSeats', JSON.stringify(selectedSeats));
+            localStorage.setItem('receiptTotalPrice', `R$ ${totalPrice.toFixed(2).replace('.', ',')}`);
+            localStorage.setItem('receiptDateTime', new Date().toLocaleString());
+
+            // Redireciona para a página de recibo
+            window.location.href = 'recibo.html'; 
+        });
+    </script>
+</body>
+</html>

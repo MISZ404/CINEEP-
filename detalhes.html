@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEEP.com</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>CINEEP</h1>
+    </header>
+    <main>
+        <h2>Detalhes do Filme</h2>
+        <div id="movie-details" class="movie-details">
+            <!-- Informações do filme serão inseridas aqui pelo JavaScript -->
+        </div>
+        <button onclick="goBack()">Voltar</button>
+        <button onclick="buyTickets()">Comprar Ingressos</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 CINEEP. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function buyTickets() {
+            window.location.href = 'selecao.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera as informações do filme do localStorage
+            const title = localStorage.getItem('selectedMovieTitle');
+            const synopsis = localStorage.getItem('selectedMovieSynopsis');
+            const times = localStorage.getItem('selectedMovieTimes');
+            const dubbed = localStorage.getItem('selectedMovieDubbed');
+            const duration = localStorage.getItem('selectedMovieDuration');
+            const category = localStorage.getItem('selectedMovieCategory');
+            const rating = localStorage.getItem('selectedMovieRating');
+
+            // Exibe as informações na página
+            document.getElementById('movie-details').innerHTML = `
+                <h3>${title}</h3>
+                <p><strong>Sinopse:</strong> ${synopsis}</p>
+                <p><strong>Horários Disponíveis:</strong> ${times}</p>
+                <p><strong>Dublado:</strong> ${dubbed}</p>
+                <p><strong>Duração:</strong> ${duration}</p>
+                <p><strong>Categoria:</strong> ${category}</p>
+                <p><strong>Classificação:</strong> ${rating}</p>
+            `;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEEP</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="6.png" type="image/png">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para a página de recibo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            max-width: 200px; /* Ajuste o tamanho da logo conforme necessário */
+            height: auto;
+        }
+
+        h1 {
+            margin: 0;
+            color: #FFFFFF;
+        }
+
+        .receipt {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+            margin-bottom: 20px;
+        }
+
+        .receipt h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #222; /* Cor do título mais escura */
+        }
+
+        .receipt p {
+            margin: 10px 0;
+            color: #333; /* Cor do texto mais escura */
+        }
+
+        .receipt .details {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a, .footer button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .footer a:hover, .footer button:hover {
+            background-color: #45a049;
+        }
+
+        .footer button {
+            background-color: #007BFF; /* Cor do botão de impressão */
+        }
+
+        .footer button:hover {
+            background-color: #0056b3; /* Cor ao passar o mouse no botão de impressão */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="4.png" alt="Logo do Cinema"> <!-- Atualize o caminho para a sua logo -->
+    </header>
+    <main>
+        <div class="receipt" id="receiptSection">
+            <h2>Resumo do Pagamento</h2>
+            <p><strong>Filme:</strong> <span id="movie-title"></span></p>
+            <p><strong>Horário:</strong> <span id="movie-time"></span></p>
+            <p><strong>Assentos Selecionados:</strong> <span id="seats"></span></p>
+            <p><strong>Preço Total:</strong> <span id="price"></span></p>
+            <p><strong>Data e Hora:</strong> <span id="date-time"></span></p>
+            <div class="details">
+                <p>Obrigado por assistir ao nosso cinema. Seu apoio é muito importante para nós!</p>
+            </div>
+        </div>
+        <div class="footer">
+            <button onclick="window.print()">Imprimir Recibo</button>
+            <button id="downloadReceipt">Baixar Recibo</button>
+            <a href="index.html">Voltar para a Página Inicial</a>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const movieTitle = localStorage.getItem('receiptMovie');
+            const movieTime = localStorage.getItem('receiptTime');
+            const seats = JSON.parse(localStorage.getItem('receiptSeats')) || [];
+            const price = localStorage.getItem('receiptTotalPrice');
+            const dateTime = localStorage.getItem('receiptDateTime');
+
+            // Preenche os dados no recibo
+            document.getElementById('movie-title').innerText = movieTitle || 'Não disponível';
+            document.getElementById('movie-time').innerText = movieTime || 'Não disponível';
+            document.getElementById('seats').innerText = seats.length > 0 ? seats.map(seat => seat + 1).join(', ') : 'Nenhum assento selecionado';
+            document.getElementById('price').innerText = price || 'Não disponível';
+            document.getElementById('date-time').innerText = dateTime || 'Não disponível';
+
+            // Limpa os dados do localStorage após mostrar o recibo
+            localStorage.removeItem('receiptMovie');
+            localStorage.removeItem('receiptTime');
+            localStorage.removeItem('receiptSeats');
+            localStorage.removeItem('receiptTotalPrice');
+            localStorage.removeItem('receiptDateTime');
+        });
+
+        // Função para baixar o recibo como imagem JPEG
+        document.getElementById("downloadReceipt").addEventListener("click", function() {
+            html2canvas(document.getElementById("receiptSection"), {
+                onrendered: function(canvas) {
+                    var link = document.createElement('a');
+                    link.href = canvas.toDataURL("image/jpeg");
+                    link.download = 'recibo.jpeg';
+                    link.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
